@@ -86,6 +86,13 @@ int main()
 	// 将结果相加
 	Sales_data sum = add(data1, data2);
 
+	/**
+	 * @brief 第一个read函数：从标准输入读取数据，并将数据存储在data1对象中。
+	 *	第二个read函数：从标准输入再次读取数据，并将数据存储在data2对象中。
+	 *	if语句：检查第二个read函数的返回值。由于read函数的返回类型是std::istream&，
+	 *  会隐式转换为布尔值。如果读取成功，则条件为true，否则为false
+	 *
+	 */
 	if (read(read(std::cin, data1), data2))
 	{
 		std::cout << "success" << std::endl;
