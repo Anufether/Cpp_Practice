@@ -3,8 +3,8 @@
  * @author anufether (anufether@sina.com)
  * @brief 练习7.1：使用2.6.1节定义的Sales_data类为1.6节的交易处理程序编写一个新版本
  * @date 2023-07-25
- * 
- * 
+ *
+ *
  * @question  练习7.8:为什么read函数将其Sales_data参数定义成普通的引用，而print将其参数定义成常量引用
  * @answer	答：因为读入的时候是内存中的值未固定，还不能定义为常量。且定义为常量后不能被改写，不合逻辑。
  */
@@ -85,6 +85,11 @@ int main()
 
 	// 将结果相加
 	Sales_data sum = add(data1, data2);
+
+	if (read(read(std::cin, data1), data2))
+	{
+		std::cout << "success" << std::endl;
+	}
 
 	if (data1.bookNo == data2.bookNo)
 	{
