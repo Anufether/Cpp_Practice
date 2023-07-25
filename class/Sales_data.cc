@@ -39,6 +39,35 @@ Sales_data &Sales_data::combine(const Sales_data &rhs)
 	return *this; // 返回调用该函数的对象
 }
 
+// 输入的交易信息包括ISBN、售出的册数以及销售价格
+std::istream &read(std::istream &is, Sales_data &item)
+{
+	double price = 0;
+	is >> item.bookNo >> item.units_sold >> price;
+	item.revenue = item.units_sold * price;
+
+	return is;
+}
+
+// 打印交易信息
+std::ostream &print(std::ostream &os, const Sales_data &item)
+{
+	os << item.isbn() << " " << item.units_sold << " "
+	   << item.revenue << " " << item.avg_price();
+
+	return os;
+}
+
+// 定义add函数，add函数接收两个Sales_data对象组为器参数，返回值是一个新的Sales_data,用于表示前两个对象的和
+Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
+{
+	// 把lhs的数据成员拷贝给sum
+	Sales_data sum = lhs;
+	sum.combine(lhs);
+	// 把rhs的数据成员加到sum当中
+	return sum;
+
+}
 int main()
 {
 	Sales_data data1, data2;

@@ -11,6 +11,26 @@
 struct Person
 {
     /**
+     * @brief Get the Name object
+     * 
+     * @return std::string  
+     */
+    std::string getName() const
+    {
+        return this->name;
+    }
+
+    /**
+     * @brief Get the Address object
+     * 
+     * @return std::string 
+     */
+    std::string getAddress() const
+    {
+        return this->address;
+    }
+
+    /**
      * @brief 姓名
      * 
      */
