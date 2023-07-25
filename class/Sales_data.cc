@@ -66,28 +66,22 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 	sum.combine(lhs);
 	// 把rhs的数据成员加到sum当中
 	return sum;
-
 }
+
 int main()
 {
 	Sales_data data1, data2;
 
-	// 读取数据1和数据2的代码
-	double price = 0;
+	// 调用read函数，从输入流中读取交易信息并存储在data1对象中
+	read(std::cin, data1);
+	read(std::cin, data2);
 
-	std::cin >> data1.bookNo >> data1.units_sold >> price;
-	// 计算价格和售出单位的总收益
-	data1.revenue = data1.units_sold * price;
+	// 调用print函数，打印
+	print(std::cout, data1);
+	print(std::cout, data2);
 
-	std::cin >> data2.bookNo >> data2.units_sold >> price;
-	data2.revenue = data2.units_sold * price;
-
-	std::cout << data1.isbn() << std::endl;
-
-	// data1属性加上data2的属性
-	data1.combine(data2);
-
-	std::cout << data1.isbn() << std::endl;
+	// 将结果相加
+	Sales_data sum = add(data1, data2);
 
 	if (data1.bookNo == data2.bookNo)
 	{
