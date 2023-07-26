@@ -7,7 +7,7 @@
  */
 
 #include <iostream>
-#include "Screen_temp.h"
+#include "Screen.h"
 
 int main()
 {
@@ -18,7 +18,5 @@ int main()
 
     Screen myScreen(5, 5, 'X');
     myScreen.move(4, 0).set('#').display(std::cout);
-    std::cout << "\n";
-    myScreen.move(3, 1).set('#').display(std::cout);
-    std::cout << "\n";
+    std::cout << myScreen.size() << std::endl;
 }

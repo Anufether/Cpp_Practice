@@ -12,20 +12,13 @@
 // extern std::ostream &storeOn(std::ostream &, Screen &);
 class Screen
 {
-    // friend std::ostream& storeOn(std::ostream &, Screen &);
-    friend class Window_mgr;
-    friend void Window_mgr::clear(ScreenIndex);
 public:
     typedef std::string::size_type pos;
-    // 因为Screen有另一个构造函数，所以本函数时必须的
     Screen() = default;
-    Screen(pos ht, pos wd) : height(ht), width(wd), contents(ht * wd, ' ') {}
+    Screen(pos ht = 0, pos wd = 0) : height(ht), width(wd), contents(ht * wd, ' ') {}
     // cursor被其类内初始化为0
+    friend class Window_mgr;
     Screen(pos ht, pos wd, char c) : height(ht), width(wd), contents(ht * wd, c) {}
-    char get() const // 读取光标处的字符
-    {
-        return contents[cursor]; // 隐式内联
-    }
     inline char get(pos ht, pos wd) const; // 显示内联
     Screen &move(pos r, pos c);            // 能在之后被设置为内联
     void some_member() const;
@@ -40,6 +33,10 @@ public:
     {
         do_display(os);
         return *this;
+    }
+    pos size() const
+    {
+        return height * width;
     }
 
 private:
@@ -73,12 +70,11 @@ inline Screen &Screen::move(pos r, pos c)
 
 inline Screen &Screen::set(char c)
 {
-    contents[cursor] = c; // 设置当前所在位置的新值
-    return *this;         // 将this对象作为左值返回
+    contents[cursor] = c; // set the new value at the current cursor location
+    return *this;         // return this object as an lvalue
 }
-
 inline Screen &Screen::set(pos r, pos col, char ch)
 {
-    contents[r * width + col] = ch; // 设置给定位置的新值
-    return *this;                   // 将this对象作为左值返回
+    contents[r * width + col] = ch; // set specified location to given value
+    return *this;                   // return this object as an lvalue
 }
