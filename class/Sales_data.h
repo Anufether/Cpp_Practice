@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-struct Sales_data
+class Sales_data
 {
 	friend Sales_data add(const Sales_data &, const Sales_data &);
 	friend std::ostream &print(std::ostream &, const Sales_data &);
@@ -35,7 +35,10 @@ public:
 
 	Sales_data &combine(const Sales_data &);
 
-	double avg_price() const;
+	double avg_price() const
+	{
+		return units_sold ? revenue / units_sold : 0;
+	}
 
 	/**
 	 * @brief 图书编号
