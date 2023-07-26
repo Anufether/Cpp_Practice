@@ -12,6 +12,18 @@
 
 struct Person
 {
+
+    friend Person add(const Person &, const Person &);
+    friend std::ostream &print(std::ostream &, const Person &);
+    friend std::istream &read(std::istream &, Person &);
+
+    Person() = default;
+    Person(const std::string &n, std::string &a) : name(n), address(a){};
+    Person(std::istream &is)
+    {
+        read(is, *this);
+    }
+
     /**
      * @brief Get the Name object
      *
@@ -46,8 +58,5 @@ struct Person
 };
 
 // Person的非成员接口函数
-Person add(const Person &, const Person &);
-std::ostream &print(std::ostream &, const Person &);
-std::istream &read(std::istream &, Person &);
 
 #endif

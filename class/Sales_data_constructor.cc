@@ -4,6 +4,8 @@
  * @brief 7.1.4节练习
  * @date 2023-07-25
  *
+ * @question 练习7.8：为什么read函数将其Sales_data参数定义成普通的引用，而print将其参数定义为常量引用
+ * @answer 因为读写的操作会改变流的内容，所以两个函数接收的都是普通引用，而非对常量的引用
  */
 
 #include <iostream>
