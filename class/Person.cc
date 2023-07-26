@@ -30,5 +30,5 @@ int main()
     // 调用print，打印
     print(std::cout, person);
 
-    std::cout << "如此便好" << std::endl;
+    std::cout << "如此便好" << std::endl; 
 }
