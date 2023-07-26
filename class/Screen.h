@@ -9,8 +9,12 @@
 #include <string>
 #include <iostream>
 
+// extern std::ostream &storeOn(std::ostream &, Screen &);
 class Screen
 {
+    // friend std::ostream& storeOn(std::ostream &, Screen &);
+    friend class Window_mgr;
+    friend void Window_mgr::clear(ScreenIndex);
 public:
     typedef std::string::size_type pos;
     // 因为Screen有另一个构造函数，所以本函数时必须的
