@@ -4,17 +4,13 @@
  * @brief 7.1.4节练习
  * @date 2023-07-25
  *
+ * @question 练习7.8：为什么read函数将其Sales_data参数定义成普通的引用，而print将其参数定义为常量引用
+ * @answer 因为读写的操作会改变流的内容，所以两个函数接收的都是普通引用，而非对常量的引用
  */
 
 #include <iostream>
 #include <string>
 #include "Sales_data.h"
-
-Sales_data::Sales_data(std::istream &is)
-{
-    // read will read a transaction from is into this object
-    read(is, *this);
-}
 
 /**
  * @brief 返回平均价格
@@ -76,18 +72,42 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 
 int main()
 {
-    // 默认构造函数（synthesized default constructor)
-    Sales_data data1;
-    read(std::cin, data1);
-    print(std::cout, data1);
+    // // 默认构造函数（synthesized default constructor)
+    // Sales_data data1;
+    // read(std::cin, data1);
+    // print(std::cout, data1);
 
-    // 构造函数初始值列表
-    Sales_data data2("ISBN123123");
-    Sales_data data3("ISBN12341234", 5, 5.5);
-    print(std::cout, data2);
-    print(std::cout, data3);
+    // // 构造函数初始值列表
+    // Sales_data data2("ISBN123123");
+    // Sales_data data3("ISBN12341234", 5, 5.5);
+    // print(std::cout, data2);
+    // print(std::cout, data3);
 
-    // 在类的外部定义构造函数
-    Sales_data data4(std::cin);
-    print(std::cout, data4);
+    // // 在类的外部定义构造函数
+    // Sales_data data4(std::cin);
+    // print(std::cout, data4);
+
+    Sales_data total;
+    if (read(std::cin, total))
+    {
+        Sales_data trans;
+        while (read(std::cin, trans))
+        {
+            if (total.isbn() == trans.isbn())
+            {
+                total = add(total, trans);
+            }
+            else
+            {
+                print(std::cout, total);
+                total = trans;
+            }
+        }
+    }
+    else
+    {
+        std::cerr << "No data?" << std::endl;
+    }
+
+    return 0;
 }

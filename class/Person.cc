@@ -6,6 +6,7 @@
  *
  */
 #include <iostream>
+#include <string>
 #include "Person.h"
 
 std::istream &read(std::istream &is, Person &item)
@@ -30,5 +31,8 @@ int main()
     // 调用print，打印
     print(std::cout, person);
 
-    std::cout << "如此便好" << std::endl; 
+    // std::cout << "如此便好" << std::endl;
+
+    Person person1(std::cin);
+    print(std::cout, person1);
 }
