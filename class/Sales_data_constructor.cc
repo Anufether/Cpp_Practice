@@ -70,18 +70,42 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 
 int main()
 {
-    // 默认构造函数（synthesized default constructor)
-    Sales_data data1;
-    read(std::cin, data1);
-    print(std::cout, data1);
+    // // 默认构造函数（synthesized default constructor)
+    // Sales_data data1;
+    // read(std::cin, data1);
+    // print(std::cout, data1);
 
-    // 构造函数初始值列表
-    Sales_data data2("ISBN123123");
-    Sales_data data3("ISBN12341234", 5, 5.5);
-    print(std::cout, data2);
-    print(std::cout, data3);
+    // // 构造函数初始值列表
+    // Sales_data data2("ISBN123123");
+    // Sales_data data3("ISBN12341234", 5, 5.5);
+    // print(std::cout, data2);
+    // print(std::cout, data3);
 
-    // 在类的外部定义构造函数
-    Sales_data data4(std::cin);
-    print(std::cout, data4);
+    // // 在类的外部定义构造函数
+    // Sales_data data4(std::cin);
+    // print(std::cout, data4);
+
+    Sales_data total;
+    if (read(std::cin, total))
+    {
+        Sales_data trans;
+        while (read(std::cin, trans))
+        {
+            if (total.isbn() == trans.isbn())
+            {
+                total = add(total, trans);
+            }
+            else
+            {
+                print(std::cout, total);
+                total = trans;
+            }
+        }
+    }
+    else
+    {
+        std::cerr << "No data?" << std::endl;
+    }
+
+    return 0;
 }
