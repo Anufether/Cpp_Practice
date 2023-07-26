@@ -34,11 +34,7 @@ public:
 	}
 
 	Sales_data &combine(const Sales_data &);
-
-	double avg_price() const
-	{
-		return units_sold ? revenue / units_sold : 0;
-	}
+	double avg_price() const;
 
 private:
 	/**
@@ -59,6 +55,14 @@ private:
 	 */
 	double revenue = 0.0;
 };
+
+inline double Sales_data::avg_price() const
+{
+	if (units_sold)
+		return revenue / units_sold;
+	else
+		return 0;
+}
 
 Sales_data add(const Sales_data &, const Sales_data &);
 std::ostream &print(std::ostream &, const Sales_data &);
