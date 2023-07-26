@@ -98,29 +98,29 @@ int main()
 		std::cout << "success" << std::endl;
 	}
 
-	if (data1.bookNo == data2.bookNo)
-	{
-		unsigned totalCnt = data1.units_sold + data2.units_sold;
-		double totalRevenue = data1.revenue + data2.revenue;
+	// if (data1.bookNo == data2.bookNo)
+	// {
+	// 	unsigned totalCnt = data1.units_sold + data2.units_sold;
+	// 	double totalRevenue = data1.revenue + data2.revenue;
 
-		// 打印信息
-		std::cout << data1.bookNo << " " << totalCnt << " " << totalRevenue << " ";
+	// 	// 打印信息
+	// 	std::cout << data1.bookNo << " " << totalCnt << " " << totalRevenue << " ";
 
-		if (totalCnt != 0)
-		{
-			std::cout << totalRevenue / totalCnt << std::endl;
-		}
-		else
-		{
-			std::cout << "(no sales)" << std::endl;
-		}
+	// 	if (totalCnt != 0)
+	// 	{
+	// 		std::cout << totalRevenue / totalCnt << std::endl;
+	// 	}
+	// 	else
+	// 	{
+	// 		std::cout << "(no sales)" << std::endl;
+	// 	}
 
-		return 0;
-	}
-	else
-	{
-		std::cerr << "Data must refer to the same ISBN"
-				  << std::endl;
-		return -1;
-	}
+	// 	return 0;
+	// }
+	// else
+	// {
+	// 	std::cerr << "Data must refer to the same ISBN"
+	// 			  << std::endl;
+	// 	return -1;
+	// }
 }
