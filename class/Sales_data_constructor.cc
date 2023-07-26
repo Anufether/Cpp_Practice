@@ -10,12 +10,6 @@
 #include <string>
 #include "Sales_data.h"
 
-Sales_data::Sales_data(std::istream &is)
-{
-    // read will read a transaction from is into this object
-    read(is, *this);
-}
-
 /**
  * @brief 返回平均价格
  *

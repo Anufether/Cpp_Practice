@@ -71,7 +71,6 @@ Sales_data add(const Sales_data &lhs, const Sales_data &rhs)
 	return sum;
 }
 
-
 int main()
 {
 	Sales_data data1, data2;
