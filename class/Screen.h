@@ -77,4 +77,4 @@ inline Screen &Screen::set(pos r, pos col, char ch)
 {
     contents[r * width + col] = ch; // set specified location to given value
     return *this;                   // return this object as an lvalue
-}
+}   
