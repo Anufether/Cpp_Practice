@@ -23,6 +23,12 @@ size_t count_calls()
     return ++ctr;
 }
 
+size_t count_calls_exercise()
+{
+    static size_t num = 0; // 使用静态局部变量来保持计数
+    return (num++ == 0) ? 0 : 1;
+}
+
 int main()
 {
     for (size_t i = 0; i != 10; i++)
@@ -35,6 +41,13 @@ int main()
     for (size_t i = 0; i != 10; i++)
     {
         cout << count_calls() << " ";
+    }
+
+    cout << endl;
+
+    for (size_t i = 0; i != 10; i++)
+    {
+        cout << count_calls_exercise() << " ";
     }
 
     return 0;
