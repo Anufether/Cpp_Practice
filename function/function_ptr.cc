@@ -7,11 +7,12 @@
  */
 #include <iostream>
 
-void reset(int *ip)
+void reset(int* ip)
 {
     *ip = 1;
     std::cout << "ip old address: " << &ip << std::endl;
     std::cout << "ip old value: " << ip << std::endl;
+    std::cout << "*ip old value: " << *ip << std::endl;
 
     ip = nullptr;
     std::cout << "ip new address: " << &ip << std::endl;
