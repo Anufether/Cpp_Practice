@@ -12,7 +12,7 @@
  * c)两个相同的参数
  * d)函数体应该定义在{}中
  * 练习6.3：见此实例
- * 练习6.5：见实例function_
+ * 练习6.5：见实例function_template.cc
  */
 #include <iostream>
 
