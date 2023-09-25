@@ -1,57 +1,76 @@
 /**
- * @file function_ampersand.cc
+ * @file function_compare.cc
  * @author anufether (anufether@sina.com)
- * @brief 6.2.2传引用参数
- * @date 2023-09-24
- * 练习6.11，本文件就是，懒得写了
- * 练习6.12，见function_ampersand_tran.cc
- * 练习6.15，-不使用就会报错呀-；occurs需要修改并返回，而s不能被修改。
- * 虽然删除const后结果相同，但是我们需要确保s字符串不能被修改，即保证结果的稳定。
- * occurs是常量引用时会报错。。常量不可被修改
- * 
- * 练习6.16：未使用const，编译容易报错，且调用对象容易与const对象不匹配报错
+ * @brief 练习6.18，将包含两个方法的实现
+ * @date 2023-09-25
+ *
  */
+#include "Matrix.hpp"
 #include <iostream>
-#include <string>
-
-// void reset(int &i)
-// {
-//     i = 1;
-// }
-
-// void reset_test(int i)
-// {
-//     i = 1;
-// }
-
-std::string::size_type find_char(const std::string &s, char c, std::string::size_type &occurs)
-{
-    auto ret = s.size(); // 第一次出现的位置
-    occurs = 0;
-    for (decltype(ret) i = 0; i != s.size(); i++)
-    {
-        if (s[i] == c)
-        {
-            if (ret == s.size())
-                ret = i + 1;
-            ++occurs;
-        }
-    }
-    return ret;
-}
 
 int main()
 {
-    // int a = 3;
-    // reset_test(a);
-    // std::cout << a << std::endl;
-    // reset(a);
-    // std::cout << a << std::endl;
+    // 创建一个3x3的矩阵对象
+    Matrix myMatrix(3, 3);
 
-    std::string s = "12cccc4j1ofca";
-    char a = 'c';
-    std::string::size_type occurs = 0;
-    std::cout << find_char(s, a, occurs) << " " << occurs << std::endl;
+    // 设置矩阵中的元素值
+    myMatrix.set(0, 0, 1.0);
+    myMatrix.set(0, 1, 2.0);
+    myMatrix.set(0, 2, 3.0);
+    myMatrix.set(1, 0, 4.0);
+    myMatrix.set(1, 1, 5.0);
+    myMatrix.set(1, 2, 6.0);
+    myMatrix.set(2, 0, 7.0);
+    myMatrix.set(2, 1, 8.0);
+    myMatrix.set(2, 2, 9.0);
+
+    // 打印矩阵
+    std::cout << "Matrix myMatrix:" << std::endl;
+    myMatrix.print();
+
+    // 替换矩阵中的值
+    myMatrix.replaceValue(1, 1, 42.0);
+
+    // 再次打印矩阵，检查替换是否生效
+    std::cout << "Matrix myMatrix after replacement:" << std::endl;
+    myMatrix.print();
+    myMatrix.replaceValue(1, 1, 5.0);
+
+    // 新增一个矩阵，将其打印、比较
+    // 创建一个3x3的矩阵对象
+    Matrix myMatrix1(3, 3);
+
+    // 设置矩阵中的元素值
+    myMatrix1.set(0, 0, 1.0);
+    myMatrix1.set(0, 1, 2.0);
+    myMatrix1.set(0, 2, 3.0);
+    myMatrix1.set(1, 0, 4.0);
+    myMatrix1.set(1, 1, 5.0);
+    myMatrix1.set(1, 2, 6.0);
+    myMatrix1.set(2, 0, 7.0);
+    myMatrix1.set(2, 1, 8.0);
+    myMatrix1.set(2, 2, 9.0);
+
+    std::cout << "Add Matrix:" << std::endl;
+    myMatrix1.print();
+
+    if (myMatrix == myMatrix1)
+    {
+        std::cout << "两个矩阵相等" << std::endl;
+    }
+    else
+    {
+        std::cout << "两个矩阵不相等" << std::endl;
+    }
+
+    std::cout << "修改myMatrix1,修改第二行的数据" << std::endl;
+    int rowToChange = 1;
+    std::vector<double> newValue = {32.0, 4.0, 1.4};
+
+    // 调用change_val函数并获取返回的迭代器
+    std::vector<double>::iterator it = myMatrix1.change_val(rowToChange, newValue);
+    // 打印修改后的函数
+    myMatrix1.print();
 
     return 0;
 }
