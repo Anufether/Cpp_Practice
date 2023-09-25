@@ -3,7 +3,10 @@
  * @author anufether (anufether@sina.com)
  * @brief 练习6.18，将包含两个方法的实现
  * @date 2023-09-25
- *
+ * 练习6.19：略，因为很简单
+ * 练习6.20：引用形参的时候什么时候使用常量引用：当函数操作不涉及到元数据的改变时，使用const
+ * 改为普通引用时，可能会导致const变量放入时产生报错，或初始化数据直接插入到函数中报错。
+ * 
  */
 #include "Matrix.hpp"
 #include <iostream>
