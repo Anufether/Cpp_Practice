@@ -1,7 +1,7 @@
 /**
  * @file function_compare.cc
  * @author anufether (anufether@sina.com)
- * @brief 练习6.18，将包含两个类的实现
+ * @brief 练习6.18，将包含两个方法的实现
  * @date 2023-09-25
  *
  */
@@ -62,6 +62,15 @@ int main()
     {
         std::cout << "两个矩阵不相等" << std::endl;
     }
+
+    std::cout << "修改myMatrix1,修改第二行的数据" << std::endl;
+    int rowToChange = 1;
+    std::vector<double> newValue = {32.0, 4.0, 1.4};
+
+    // 调用change_val函数并获取返回的迭代器
+    std::vector<double>::iterator it = myMatrix1.change_val(rowToChange, newValue);
+    // 打印修改后的函数
+    myMatrix1.print();
 
     return 0;
 }

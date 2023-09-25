@@ -24,6 +24,8 @@ public:
     // 新增方法声明：替换矩阵中特定位置的值
     void replaceValue(int row, int col, double newValue);
     void print() const;
+
+    std::vector<double>::iterator change_val(int row, std::vector<double> newValue);
 };
 
 #endif // MATRIX_H

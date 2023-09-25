@@ -1,4 +1,5 @@
 #include "Matrix.hpp"
+#include <iterator>
 #include <iostream>
 
 Matrix::Matrix(int rows, int cols) : rows(rows), cols(cols)
@@ -76,5 +77,30 @@ void Matrix::print() const
             std::cout << data[i][j] << " ";
         }
         std::cout << std::endl;
+    }
+}
+
+// 定义change_val函数
+std::vector<double>::iterator Matrix::change_val(int row, std::vector<double> newValues)
+{
+    if (row >= 0 && row < rows && newValues.size() == cols)
+    {
+        // 检查行索引是否有效，以及newValues向量的元素数量是否等于列数
+
+        std::vector<double>::iterator it = data[row].begin(); // 获取指向该行开头的迭代器
+
+        for (int i = 0; i < cols; ++i)
+        {
+            // 使用新值更新行中的元素
+            *it = newValues[i];
+            ++it;
+        }
+
+        return data[row].begin(); // 返回指向修改后行的开头的迭代器
+    }
+    else
+    {
+        // 无效的行索引或newValues向量中的元素数量不正确
+        return data[0].end(); // 返回指向第一行末尾的迭代器（表示操作失败）
     }
 }
