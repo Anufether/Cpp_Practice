@@ -24,7 +24,7 @@ constexpr int new_sz()
 constexpr int foo = new_sz();
 
 // 练习6.43我会将其放在头文件内联函数通常会预先展开，方便调用
-inline bool eq(const BigInt &, const BigInt &);
+// inline bool eq(const BigInt &, const BigInt &);
 
 // 放在源文件，普通函数
 void putValues(int *arr, int size);
