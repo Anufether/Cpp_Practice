@@ -28,7 +28,16 @@ int fun_div(int a, int b)
     return a / b;
 }
 
-std::vector<int (*)(int, int)> Func_vec()
+int (*func_vec_temp)(int, int);
+
+// std::vector<int (*)(int, int)> Func_vec()
+
+// std::vector<decltype(func_vec_temp)> Func_vec()
+
+// using PF = int (*)(int, int);
+// std::vector<PF> Func_vec()
+
+auto Func_vec() -> std::vector<int (*)(int, int)>
 {
     std::vector<int (*)(int, int)> functionPointers;
     functionPointers.push_back(fun_add);
@@ -43,10 +52,10 @@ int main()
 {
     std::vector<int (*)(int, int)> myFuncs = Func_vec();
 
-    std::cout << "Result: " 
+    std::cout << "Result: "
               << myFuncs[0](10, 20) << " "
-              << myFuncs[1](10, 20) << " " 
-              << myFuncs[2](10, 20) << " " 
+              << myFuncs[1](10, 20) << " "
+              << myFuncs[2](10, 20) << " "
               << myFuncs[3](10, 20) << std::endl;
 
     return 0;
